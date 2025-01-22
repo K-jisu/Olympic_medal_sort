@@ -1,4 +1,4 @@
-const Input = ({ id, label, type, handler }) => {
+const Input = ({ id, label, type, handler, value }) => {
   return (
     <>
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -6,7 +6,8 @@ const Input = ({ id, label, type, handler }) => {
         <input
           id={id}
           type={type}
-          onChange={(e) => handler("country", e.target.value)}
+          value={value}
+          onChange={(e) => handler(id, e)}
         />
       </div>
     </>
