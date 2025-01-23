@@ -13,28 +13,28 @@ const InputForm = ({ handleInputChange, handleSubmit, data }) => {
         label={"국가명"}
         type={"text"}
         value={data.country}
-        handler={handleInputChange}
+        onChange={handleInputChange}
       />
       <Input
         id={"gold"}
         label={"금메달"}
         type={"number"}
         value={data.gold}
-        handler={handleInputChange}
+        onChange={handleInputChange}
       />
       <Input
         id={"silver"}
         label={"은메달"}
         type={"number"}
         value={data.silver}
-        handler={handleInputChange}
+        onChange={handleInputChange}
       />
       <Input
         id={"bronze"}
         label={"동메달"}
         type={"number"}
         value={data.bronze}
-        handler={handleInputChange}
+        onChange={handleInputChange}
       />
       <Button type={"submit"} content={"국가 추가"} name={"addBtn"} />
       <Button type={"submit"} content={"업데이트"} name={"update"} />

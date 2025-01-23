@@ -1,10 +1,12 @@
 import React from "react";
 import Button from "../atoms/Button";
+import { getLocalStorage } from "../utils/localStorage";
 
-const Article = ({ submitList, handleDelete }) => {
+const Article = ({ handleDelete }) => {
+  const localStorageList = getLocalStorage("list");
   return (
     <>
-      {submitList.map((item) => {
+      {localStorageList.map((item) => {
         return (
           <article
             key={item.country}
@@ -21,7 +23,7 @@ const Article = ({ submitList, handleDelete }) => {
               type={"button"}
               content={"삭제"}
               name={item.country}
-              event={handleDelete}
+              onClick={handleDelete}
             />
           </article>
         );
