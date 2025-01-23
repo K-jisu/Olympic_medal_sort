@@ -1,13 +1,14 @@
-const Input = ({ id, label, type, handler, value }) => {
+const Input = ({ id, label, type, onChange, value, checked }) => {
   return (
     <>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <label htmlFor="id">{label}</label>
+        <label htmlFor={id}>{label}</label>
         <input
           id={id}
           type={type}
           value={value}
-          onChange={(e) => handler(id, e)}
+          onChange={(e) => onChange(id, e)}
+          checked={checked}
         />
       </div>
     </>
