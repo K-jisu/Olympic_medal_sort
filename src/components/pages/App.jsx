@@ -1,25 +1,17 @@
 import { useState } from "react";
 import "./App.css";
 import Body from "../organism/Body";
-import Header from "../organism/Header";
+import FormContainer from "../organism/FormContainer";
+import SortBox from "../molecules/SortBox";
+import { getLocalStorage } from "../utils/localStorage";
 
 function App() {
-  const [data, setData] = useState({
-    country: "",
-    gold: "",
-    silver: "",
-    bronze: "",
-  });
-  const [submitList, setSubmitList] = useState([]);
+  const [submitList, setSubmitList] = useState(getLocalStorage("list"));
 
   return (
     <>
-      <Header
-        setSubmitList={setSubmitList}
-        setData={setData}
-        data={data}
-        submitList={submitList}
-      />
+      <FormContainer setSubmitList={setSubmitList} submitList={submitList} />
+      <SortBox submitList={submitList} setSubmitList={setSubmitList} />
       <Body submitList={submitList} setSubmitList={setSubmitList} />
     </>
   );
