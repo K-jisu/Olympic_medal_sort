@@ -12,45 +12,57 @@ const Header = ({ submitList, setSubmitList, setData, data }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     switch (e.nativeEvent.submitter.name) {
-      // 국가 추가 버튼
+      // 추가 버튼 클릭 시
       case "addBtn":
+        // 입력 폼에 빈 값이 있을 때.
+        if (Object.values(data).some((value) => value === "")) {
+          alert("모든 항목을 작성해 주세요");
+          return;
+        }
+
         setSubmitList((prev) => {
+          // 이미 국가가 있을 때.
           if (prev.some((item) => item.country === data.country)) {
             alert("이미 있는 국가입니다!");
             return prev;
-          }else {
+          } else {
+            // 없을 때 추가 후 data 초기화
             setData({
               country: "",
-              gold: 0,
-              silver: 0,
-              bronze: 0,
+              gold: "",
+              silver: "",
+              bronze: "",
             });
             return [...prev, data];
           }
         });
         break;
-        // 업데이트 눌렀을 때
+
+      // 업데이트 클릭 시
       case "update":
+        // 업데이트 국가가 없을 때.
         if (!submitList.some((item) => item.country === data.country)) {
-          alert("확인");
+          alert("국가를 먼저 추가해 주세요");
           setData({
             country: "",
-            gold: 0,
-            silver: 0,
-            bronze: 0,
+            gold: "",
+            silver: "",
+            bronze: "",
           });
           return;
         }
+
         setSubmitList((prev) => {
           const updateList = prev.map((item) => {
+            // 국가가 있을 때 수정
             if (item.country === data.country) {
               return { ...item, ...data };
             } else {
               setData({
                 country: "",
-                gold: 0,
-                silver: 0,
-                bronze: 0,
+                gold: "",
+                silver: "",
+                bronze: "",
               });
               return item;
             }
@@ -61,6 +73,7 @@ const Header = ({ submitList, setSubmitList, setData, data }) => {
     }
   };
 
+  //
   const sortFunc = (array) => {
     return array.sort((a, b) => {
       if (b.gold === a.gold) {
