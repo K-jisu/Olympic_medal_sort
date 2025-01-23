@@ -7,8 +7,9 @@ const Input = ({ id, label, type, onChange, value, checked }) => {
           id={id}
           type={type}
           value={value}
-          onChange={(e) => (onChange ? onChange(id, e) : null)}
+          onChange={(e) => onChange(id, e)}
           checked={checked}
+          required
         />
       </div>
     </>
