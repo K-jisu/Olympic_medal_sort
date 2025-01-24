@@ -1,0 +1,14 @@
+button:hover{
+  cursor: pointer;
+}
+.addbtn{
+  border-radius: 10px;
+  background-color: #d6f675;
+  border: 1px solid #d6f675;
+}
+
+.removebtn{
+  border-radius: 10px;
+  background-color: #fe7373;
+  border: 1px solid #fe7373;
+}

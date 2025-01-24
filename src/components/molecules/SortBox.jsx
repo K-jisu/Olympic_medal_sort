@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Input from "../atoms/Input";
 import { setLocalStorage } from "../utils/localStorage";
 import { sortFunc } from "../utils/sortFunc";
+import Input from "../atoms/Input";
 
 const SortBox = ({ submitList, setSubmitList }) => {
   const [checked, setChecked] = useState(true);
@@ -57,11 +57,19 @@ const SortBox = ({ submitList, setSubmitList }) => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        gap: "20px",
+        margin: "20px 0",
+      }}
+    >
       <Input
         id={"goldSort"}
         type={"checkbox"}
-        label={"메달 순"}
+        label={"금 은 동"}
         value={"goldmedal"}
         checked={checked}
         onChange={handleGoldMedalSort}

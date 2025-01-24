@@ -1,9 +1,10 @@
 // import InputForm from "../molecules/InputForm";
 import { useState } from "react";
-import Button from "../atoms/Button";
-import Input from "../atoms/Input";
 import { setLocalStorage } from "../utils/localStorage";
 import { sortFunc } from "../utils/sortFunc";
+import Button from "../atoms/Button";
+import Input from "../atoms/Input";
+import styles from "../styles/form.module.css";
 
 const FormContainer = ({ submitList, setSubmitList }) => {
   const [data, setData] = useState({
@@ -92,10 +93,8 @@ const FormContainer = ({ submitList, setSubmitList }) => {
 
   return (
     <header>
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "row" }}
-      >
+      <h1>2024 파리 올림픽</h1>
+      <form onSubmit={handleSubmit}>
         <Input
           id={"country"}
           label={"국가명"}
@@ -124,8 +123,18 @@ const FormContainer = ({ submitList, setSubmitList }) => {
           value={data.bronze}
           onChange={handleInputChange}
         />
-        <Button type={"submit"} content={"국가 추가"} name={"addBtn"} />
-        <Button type={"submit"} content={"업데이트"} name={"update"} />
+        <Button
+          type={"submit"}
+          content={"국가 추가"}
+          name={"addBtn"}
+          className="addbtn"
+        />
+        <Button
+          type={"submit"}
+          content={"업데이트"}
+          name={"update"}
+          className="addbtn"
+        />
       </form>
     </header>
   );
