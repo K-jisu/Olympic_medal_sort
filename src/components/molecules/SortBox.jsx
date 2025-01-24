@@ -3,18 +3,20 @@ import { setLocalStorage } from "../utils/localStorage";
 import { sortFunc } from "../utils/sortFunc";
 import Input from "../atoms/Input";
 
-const SortBox = ({ submitList, setSubmitList }) => {
-  const [checked, setChecked] = useState(true);
+const SortBox = ({ submitList, setSubmitList, checked, setChecked }) => {
+  // const [checked, setChecked] = useState(true);
 
   // 금 은 동 정렬
   const handleGoldMedalSort = () => {
     if (!checked) {
       // false : true로 바꿈
-      setChecked(!checked);
+      setChecked((prev) => {
+        return !prev;
+      });
       // true : 정렬
       const updateList = sortFunc(submitList);
-      setLocalStorage("list", updateList);
       setSubmitList(updateList);
+      setLocalStorage("list", updateList);
     }
   };
 
@@ -22,7 +24,9 @@ const SortBox = ({ submitList, setSubmitList }) => {
   const handleTotalMedalSort = () => {
     if (checked) {
       // false : true로 바꿈
-      setChecked(!checked);
+      setChecked((prev) => {
+        return !prev;
+      });
       // true 정렬
       const totalMedalUpdate = submitList.sort((a, b) => {
         // 전체 메달 수가 같으면

@@ -85,6 +85,7 @@ const FormContainer = ({ submitList, setSubmitList }) => {
           });
           const sortedList = sortFunc(updateList);
           setLocalStorage("list", sortedList);
+          setSubmitList(sortedList);
           return sortedList;
         });
         break;

@@ -7,11 +7,17 @@ import { getLocalStorage } from "../utils/localStorage";
 
 function App() {
   const [submitList, setSubmitList] = useState(getLocalStorage("list"));
+  const [checked, setChecked] = useState(true);
 
   return (
     <>
       <FormContainer setSubmitList={setSubmitList} submitList={submitList} />
-      <SortBox submitList={submitList} setSubmitList={setSubmitList} />
+      <SortBox
+        submitList={submitList}
+        setSubmitList={setSubmitList}
+        checked={checked}
+        setChecked={setChecked}
+      />
       <Body submitList={submitList} setSubmitList={setSubmitList} />
     </>
   );

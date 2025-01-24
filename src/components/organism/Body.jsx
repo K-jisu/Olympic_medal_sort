@@ -3,7 +3,7 @@ import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
 import "../styles/body.css";
 
 const Body = ({ submitList, setSubmitList }) => {
-  const localStorageList = getLocalStorage("list");
+  // const localStorageList = getLocalStorage("list");
 
   // 목록 삭제
   const handleDelete = (e) => {
@@ -13,6 +13,7 @@ const Body = ({ submitList, setSubmitList }) => {
     setLocalStorage("list", filteredData);
     setSubmitList(filteredData);
   };
+  console.log("body" +submitList)
 
   return (
     <main>
@@ -25,11 +26,9 @@ const Body = ({ submitList, setSubmitList }) => {
           <h5>총 메달 수</h5>
           <h5>액션</h5>
         </div>
-        {localStorageList.map((item) => {
+        {submitList.map((item) => {
           return (
-            <article
-              key={item.country}
-            >
+            <article key={item.country}>
               <p>{item.country}</p>
               <p>{item.gold}</p>
               <p>{item.silver}</p>
