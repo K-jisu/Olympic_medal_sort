@@ -6,7 +6,7 @@ import SortBox from "../molecules/SortBox";
 import { getLocalStorage } from "../utils/localStorage";
 
 function App() {
-  const [submitList, setSubmitList] = useState(getLocalStorage("list"));
+  const [submitList, setSubmitList] = useState(getLocalStorage("list") || []);
   const [checked, setChecked] = useState(true);
 
   return (
