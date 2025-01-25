@@ -14,7 +14,7 @@
 - 국가 추가, 내용 업데이트, 삭제 기능
 
 # 트러블 슈팅
-- [some메서드의 조건을 어떻게 해야하지?]([https://velog.io/@wltn7star/TIL19.-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-some-%EC%82%AC%EC%9A%A9])
+- [some메서드의 조건을 어떻게 해야하지?](https://velog.io/@wltn7star/TIL19.-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-some-%EC%82%AC%EC%9A%A9)
 
 # 프로젝트 구조
 ```
