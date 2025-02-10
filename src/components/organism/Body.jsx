@@ -3,8 +3,6 @@ import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
 import "../styles/body.css";
 
 const Body = ({ submitList, setSubmitList }) => {
-  // const localStorageList = getLocalStorage("list");
-
   // 목록 삭제
   const handleDelete = (e) => {
     const filteredData = submitList.filter(
@@ -13,7 +11,6 @@ const Body = ({ submitList, setSubmitList }) => {
     setLocalStorage("list", filteredData);
     setSubmitList(filteredData);
   };
-  console.log("body" +submitList)
 
   return (
     <main>

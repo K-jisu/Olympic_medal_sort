@@ -5,6 +5,7 @@ import { sortFunc } from "../utils/sortFunc";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
 import styles from "../styles/form.module.css";
+import { resetData } from "../utils/resetData";
 
 const FormContainer = ({ submitList, setSubmitList }) => {
   const [data, setData] = useState({
@@ -21,42 +22,32 @@ const FormContainer = ({ submitList, setSubmitList }) => {
     }));
   };
 
+  const duplicateCheck = (list, data) => {
+    return list.some((item) => item.country === data.country);
+  };
+
   // 추가 및 업데이트
   const handleSubmit = (e) => {
     e.preventDefault();
     switch (e.nativeEvent.submitter.name) {
-      // 추가 버튼 클릭 시
       case "addBtn":
-        // 입력 폼에 빈 값이 있을 때.
         if (Object.values(data).some((value) => value === "")) {
           alert("모든 항목을 작성해 주세요");
           return;
         }
 
         setSubmitList((prev) => {
-          // 이미 국가가 있을 때.
-          if (prev.some((item) => item.country === data.country)) {
+          if (duplicateCheck(prev, data)) {
             alert("이미 있는 국가입니다!");
-            setData({
-              country: "",
-              gold: "",
-              silver: "",
-              bronze: "",
-            });
             return prev;
-          } else {
-            setData({
-              country: "",
-              gold: "",
-              silver: "",
-              bronze: "",
-            });
-            // 없을 때 추가 후 data 초기화
-            const sortedList = sortFunc([...prev, data]);
-            setLocalStorage("list", sortedList);
-            return sortedList;
           }
+
+          const sortedList = sortFunc([...prev, data]);
+          setLocalStorage("list", sortedList);
+          return sortedList;
         });
+
+        setData(resetData);
         break;
 
       // 업데이트 클릭 시
@@ -64,12 +55,7 @@ const FormContainer = ({ submitList, setSubmitList }) => {
         // 업데이트 국가가 없을 때.
         if (!submitList.some((item) => item.country === data.country)) {
           alert("국가를 먼저 추가해 주세요");
-          setData({
-            country: "",
-            gold: "",
-            silver: "",
-            bronze: "",
-          });
+          setData(resetData);
           return;
         }
 
